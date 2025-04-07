@@ -30,6 +30,13 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ Mongo Error:", err));
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to AI School API 🎓",
+    endpoints: ["/api/auth", "/api/news", "/api/students", "/api/dashboard"],
+  });
+});
+
 // Start server
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
