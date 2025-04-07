@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
-app.use("/api/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
 app.use("/auth", require("../routes/auth.route"));
@@ -30,7 +30,7 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ Mongo Error:", err));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({
     message: "Welcome to AI School API 🎓",
   });
