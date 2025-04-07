@@ -37,7 +37,7 @@ app.get("/api", (req, res) => {
   });
 });
 
-router.get("/api/news", async (req, res) => {
+app.get("/api/news", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
