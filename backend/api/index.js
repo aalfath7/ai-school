@@ -16,10 +16,10 @@ app.use(fileUpload());
 app.use("/api/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
-app.use("/api/auth", require("../routes/auth.route"));
-app.use("/api/news", require("../routes/news.route"));
-app.use("/api/students", require("../routes/student.route"));
-app.use("/api/dashboard", require("../routes/dashboard.route"));
+app.use("/auth", require("../routes/auth.route"));
+app.use("/news", require("../routes/news.route"));
+app.use("/students", require("../routes/student.route"));
+app.use("/dashboard", require("../routes/dashboard.route"));
 
 // MongoDB Connection
 mongoose
@@ -30,10 +30,9 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ Mongo Error:", err));
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json({
     message: "Welcome to AI School API 🎓",
-    endpoints: ["/api/auth", "/api/news", "/api/students", "/api/dashboard"],
   });
 });
 
