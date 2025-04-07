@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // Import model dengan aman dari overwrite error
-const Student = require("../models/student");
-const News = require("../models/news");
+const Student = require("../models/Student");
+const News = require("../models/News");
 
 // Optional middleware jika ingin membatasi akses admin
 // const auth = require("../middleware/auth");
