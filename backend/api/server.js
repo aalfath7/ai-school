@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const serverless = require("serverless-http");
 
 dotenv.config();
 const app = express();
@@ -12,13 +13,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
-app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
-app.use("/api/auth", require("./routes/auth.route"));
-app.use("/api/news", require("./routes/news.route"));
-app.use("/api/students", require("./routes/student.route"));
-app.use("/api/dashboard", require("./routes/dashboard.route"));
+app.use("/api/auth", require("../routes/auth.route"));
+app.use("/api/news", require("../routes/news.route"));
+app.use("/api/students", require("../routes/student.route"));
+app.use("/api/dashboard", require("../routes/dashboard.route"));
 
 // MongoDB Connection
 mongoose
