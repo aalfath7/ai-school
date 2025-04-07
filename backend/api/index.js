@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const serverless = require("serverless-http");
+const News = require("../models/News");
 
 dotenv.config();
 const app = express();
@@ -34,6 +35,29 @@ app.get("/api", (req, res) => {
   res.json({
     message: "Welcome to AI School API 🎓",
   });
+});
+
+router.get("/api/news", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+    const search = req.query.search || "";
+    const query = search ? { title: { $regex: search, $options: "i" } } : {};
+
+    const total = await News.countDocuments(query);
+    const news = await News.find(query)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.json({
+      data: news,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // Start server
