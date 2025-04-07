@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const News = require("../models/news");
+const News = require("../models/News");
 const auth = require("../middleware/auth");
 const fs = require("fs");
 const path = require("path");
