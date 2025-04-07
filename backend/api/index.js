@@ -30,7 +30,7 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ Mongo Error:", err));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({
     message: "Welcome to AI School API 🎓",
     endpoints: ["/api/auth", "/api/news", "/api/students", "/api/dashboard"],
