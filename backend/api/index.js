@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const serverless = require("serverless-http");
-const News = require("../models/News");
+const News = require("./models/News");
 
 dotenv.config();
 const app = express();
@@ -18,7 +18,7 @@ app.use("/api/uploads", express.static(path.join(__dirname, "./uploads")));
 
 // Routes
 app.use("/api/auth", require("./routes/auth.route"));
-app.use("/api/news", require("./routes/news.route"));
+// app.use("/api/news", require("./routes/news.route"));
 app.use("/api/students", require("./routes/student.route"));
 app.use("/api/dashboard", require("./routes/dashboard.route"));
 
